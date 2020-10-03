@@ -83,8 +83,8 @@ def master_yoda(sent):
     master_yoda('We are ready') --> 'ready are We'
     """
     result = []
-    result[:-1] = sent.split()
-    return ' '.join(reversed(result))
+    result = sent.split()
+    return ' '.join(result[::-1])
 
 
 assert master_yoda('I am home') == 'home am I'
@@ -238,8 +238,10 @@ def count_primes(num):
     :param num: numb to count to
     :return: total number of primes that exists from 0 till and upto 100
     """
-    counter = 0
-    for n in range(2, num + 1):
+    if num < 2:
+        return 0
+    counter = 1
+    for n in range(3, num + 1, 2):
         if is_prime(n):
             counter += 1
     return counter
@@ -261,11 +263,11 @@ def is_prime(n):
 
 assert count_primes(100) == 25
 
-big_letters = {'a': ['  *  ', ' * * ', '*****', '*   *', '*   *'],
-               'b': ['***', '*  *', '***', '*  *', '***'],
-               'c': ['  ***', ' *', '*', ' *', '  ***'],
-               'd': ['**', '*  *', '*   *', '*  *', '**'],
-               'e': ['*****', '*', '*****', '*', '*****']}
+# big_letters = {'a': ['  *  ', ' * * ', '*****', '*   *', '*   *'],
+#                'b': ['***', '*  *', '***', '*  *', '***'],
+#                'c': ['  ***', ' *', '*', ' *', '  ***'],
+#                'd': ['**', '*  *', '*   *', '*  *', '**'],
+#                'e': ['*****', '*', '*****', '*', '*****']}
 
 
 def print_big(letter):
@@ -284,12 +286,20 @@ def print_big(letter):
     For purposes of this exercise, it's ok if your dictionary stops at "E".
     :param letter: str
     """
-    for char in big_letters[letter]:
-        print(char)
-    pass
+    # for char in big_letters[letter]:
+    #     print(char)
+    # pass
 
-# print_big('a')
-# print_big('b')
-# print_big('c')
-# print_big('d')
-# print_big('e')
+    patterns = {1: '  *  ', 2: ' * * ', 3: '*   *', 4: '*****', 5: '**** ', 6: '   * ', 7: ' *   ',
+                8: '*   * ', 9: '*    '}
+    alphabet = {'A': [1, 2, 4, 3, 3], 'B': [5, 3, 5, 3, 5], 'C': [4, 9, 9, 9, 4],
+                'D': [5, 3, 3, 3, 5], 'E': [4, 9, 4, 9, 4]}
+    for pattern in alphabet[letter.upper()]:
+        print(patterns[pattern])
+
+
+print_big('a')
+print_big('b')
+print_big('c')
+print_big('d')
+print_big('e')
