@@ -26,7 +26,11 @@ def is_palindrome(s):
     :param s:
     :return:
     """
+    s = s.replace(" ", "")
     length = len(s)
+    """
+    Another simple, but slower solution is to return s == s[::-1] 
+    """
     for i in range(length//2):
         if s[i] != s[length-i - 1]:
             return False
@@ -35,7 +39,7 @@ def is_palindrome(s):
 
 assert is_palindrome('catac') == True
 assert is_palindrome('cat') == False
-assert is_palindrome('racecar') == True
+assert is_palindrome('nurses run') == True
 assert is_palindrome('madam') == True
 
 
@@ -49,6 +53,10 @@ def is_panagram(str, alphabet=string.ascii_lowercase):
     :param alphabet:
     :return:
     """
+
+    " Another solution is to remove the spaces and make str lower, " \
+        "then transform both into a set and check if str_set == alpha(set)"
+
     str_set = set(x.lower() for x in str)
     alpha_list = list(x.lower() for x in alphabet)
     for c in str_set:
