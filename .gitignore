@@ -5,7 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+.idea/
+*.xml
 # Distribution / packaging
 .Python
 build/
@@ -27,14 +28,14 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-*/.idea/
-
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
+.idea/
+*.xml
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -121,6 +122,7 @@ venv.bak/
 
 # mkdocs documentation
 /site
+16047243630
 
 # mypy
 .mypy_cache/
